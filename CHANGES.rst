@@ -1,6 +1,13 @@
 Release 9.1.1 (in development)
 ==============================
 
+Features added
+--------------
+
+* #10385: Add RTL (right-to-left) support for all Sphinx themes via the ``is_rtl``
+  theme option. Includes automatic layout mirroring, and bidirectional text support.
+  Patch by Alireza Shabani and Sepehr Rasouli.
+
 Bugs fixed
 ----------
 
