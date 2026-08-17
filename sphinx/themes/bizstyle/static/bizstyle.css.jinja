@@ -17,15 +17,15 @@ body {
     background-image: url(background_b01.png);
     color: black;
     padding: 0;
-    border-right: 1px solid {{ theme_maincolor }};
-    border-left: 1px solid {{ theme_maincolor }};
+    border-inline-start: 1px solid {{ theme_maincolor }};
+    border-inline-end: 1px solid {{ theme_maincolor }};
 
-    margin: 0px 40px 0px 40px;
+    margin: 0px inline-start 0px inline-end;
 }
 
 div.document {
     background-color: white;
-    text-align: left;
+    text-align: start;
     background-repeat: repeat-x;
 
     -moz-box-shadow: 2px 2px 5px #000;
@@ -33,13 +33,13 @@ div.document {
 }
 
 div.documentwrapper {
-    float: left;
+    float: inline-start;
     width: 100%;
 }
 
 div.bodywrapper {
     margin: 0 0 0 240px;
-    border-left: 1px solid #ccc;
+    border-inline-start: 1px solid #ccc;
 }
 
 div.body {
@@ -50,7 +50,7 @@ div.body {
 {%- if theme_rightsidebar|tobool %}
 div.bodywrapper {
     margin: 0 calc({{ theme_sidebarwidth|todim }} + 30px) 0 0;
-    border-right: 1px solid #ccc;
+    border-inline-end: 1px solid #ccc;
 }
 {%- else %}
 div.bodywrapper {
@@ -78,12 +78,12 @@ div.related ul li {
     margin: 0;
     padding: 0;
     height: 2em;
-    float: left;
+    float: inline-start;
 }
 
 div.related ul li.right {
-    float: right;
-    margin-right: 5px;
+    float: inline-end;
+    margin-inline-end: 5px;
 }
 
 div.related ul li a {
@@ -106,10 +106,10 @@ div.sphinxsidebar {
     padding: 0.5em 12px 12px 12px;
     width: {{ theme_sidebarwidth|todim }};
     {%- if theme_rightsidebar|tobool %}
-    float: right;
-    {%- endif %}
+    float: inline-end;
+    {%- endif };
     font-size: 1em;
-    text-align: left;
+    text-align: start;
 }
 
 div.sphinxsidebar h3, div.sphinxsidebar h4 {
@@ -126,14 +126,15 @@ div.sphinxsidebar h3 a {
 }
 
 div.sphinxsidebar ul {
-    padding-left: 1.5em;
+    padding-inline-start: 1.5em;
     margin-top: 7px;
     padding: 0;
     line-height: 130%;
+    text-align: start;
 }
 
 div.sphinxsidebar ul ul {
-    margin-left: 20px;
+    margin-inline-start: 20px;
 }
 
 div.sphinxsidebar input {
@@ -146,7 +147,7 @@ div.footer {
     padding: 3px 8px 3px 0;
     clear: both;
     font-size: 0.8em;
-    text-align: right;
+    text-align: end;
     border-bottom: 1px solid {{ theme_maincolor }};
 
     -moz-box-shadow: 2px 2px 5px #000;
@@ -233,7 +234,7 @@ h5 a.anchor:hover, h6 a.anchor:hover {
 a.headerlink {
     color: #c60f0f!important;
     font-size: 1em;
-    margin-left: 6px;
+    margin-inline-start: 6px;
     padding: 0 4px 0 4px;
     text-decoration: none!important;
 }
@@ -282,8 +283,11 @@ pre {
     letter-spacing: 0.015em;
     line-height: 120%;
     padding: 0.5em;
-    border-right: 5px solid #ccc;
-    border-left: 5px solid #ccc;
+    border-inline-end: 5px solid #ccc;
+    border-inline-start: 5px solid #ccc;
+    direction: ltr;
+    unicode-bidi: embed;
+    text-align: left;
 }
 
 pre a {
@@ -298,7 +302,7 @@ td.linenos pre {
 div.quotebar {
     background-color: #f8f8f8;
     max-width: 250px;
-    float: right;
+    float: inline-end;
     padding: 2px 7px;
     border: 1px solid #ccc;
 }
@@ -332,7 +336,7 @@ div.admonition p {
 }
 
 div.admonition li p {
-    margin-left: 0;
+    margin-inline-start: 0;
 }
 
 div.admonition pre, div.warning pre {
@@ -391,7 +395,7 @@ div.warning ul, div.warning ol {
 }
 
 div.versioninfo {
-    margin: 1em 0 0 0;
+    margin: 1em inline-start 0 0;
     border: 1px solid #ccc;
     background-color: #DDEAF0;
     padding: 8px;
@@ -412,7 +416,7 @@ div.viewcode-block:target {
 
 p.versionchanged span.versionmodified {
     font-size: 0.9em;
-    margin-right: 0.2em;
+    margin-inline-end: 0.2em;
     padding: 0.1em;
     background-color: #DCE6A0;
 }
@@ -438,8 +442,8 @@ table.docutils {
 table.docutils td, table.docutils th {
     padding: 1px 8px 1px 5px;
     border-top: 0;
-    border-left: 0;
-    border-right: 1px solid white;
+    border-inline-start: 0;
+    border-inline-end: 1px solid white;
     border-bottom: 1px solid white;
 }
 
@@ -459,8 +463,8 @@ table.footnote td, table.footnote th {
 
 th {
     color: white;
-    text-align: left;
-    padding-right: 5px;
+    text-align: start;
+    padding-inline-end: 5px;
     background-color: #82A0BE;
 }
 

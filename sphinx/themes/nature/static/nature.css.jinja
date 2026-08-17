@@ -16,12 +16,12 @@ body {
 }
 
 div.documentwrapper {
-    float: left;
+    float: inline-start;
     width: 100%;
 }
 
 div.bodywrapper {
-    margin: 0 0 0 {{ theme_sidebarwidth|todim }};
+    margin-inline-start: {{ theme_sidebarwidth|todim }};
 }
 
 hr {
@@ -119,8 +119,8 @@ div.sphinxsidebar input {
 }
 
 div.sphinxsidebar .searchformwrapper {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-inline-start: 20px;
+    margin-inline-end: 20px;
 }
 
 /* -- body styles ----------------------------------------------------------- */
@@ -149,7 +149,8 @@ div.body h6 {
     background-color: #BED4EB;
     font-weight: normal;
     color: #212224;
-    margin: 30px 0px 10px 0px;
+    margin-block: 30px 10px;
+    margin-inline: 0;
     padding: 5px 0 5px 10px;
     text-shadow: 0px 1px 0 white
 }

@@ -16,12 +16,12 @@ body {
 }
 
 div.documentwrapper {
-    float: left;
+    float: inline-start;
     width: 100%;
 }
 
 div.bodywrapper {
-    margin: 0 0 0 {{ theme_sidebarwidth|todim }};
+    margin-inline-start: {{ theme_sidebarwidth|todim }};
 }
 
 hr {
@@ -49,7 +49,7 @@ div.body {
     padding: 0 30px 30px 30px;
     font-size: 1em;
     border: 2px solid #ddd;
-    border-right-style: none;
+    border-inline-end-style: none;
     overflow: auto;
 }
 
@@ -85,7 +85,7 @@ div.related a {
 }
 
 div.related ul {
-    padding-left: calc({{ theme_sidebarwidth|todim }} + 10px);
+    padding-inline-start: calc({{ theme_sidebarwidth|todim }} + 10px);
 }
 
 div.sphinxsidebar {
@@ -142,8 +142,8 @@ div.sphinxsidebar input {
 }
 
 div.sphinxsidebar .searchformwrapper {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-inline-start: 20px;
+    margin-inline-end: 20px;
 }
 
 /* -- sidebars -------------------------------------------------------------- */
@@ -153,10 +153,11 @@ div.sidebar, aside.sidebar {
     border: 2px solid #c6d880;
     background-color: #e6efc2;
     width: 40%;
-    float: right;
-    border-right-style: none;
-    border-left-style: none;
-    padding: 10px 20px;
+    float: inline-end;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
+    padding-block: 10px;
+    padding-inline: 20px;
 }
 
 p.sidebar-title {
@@ -188,7 +189,8 @@ div.body h6 {
     background-color: #ffffff;
     font-weight: normal;
     color: #373839;
-    margin: 30px 0px 10px 0px;
+    margin-block: 30px 10px;
+    margin-inline: 0;
     padding: 5px 0;
 }
 
@@ -221,15 +223,15 @@ div.admonition p.admonition-title + p {
 div.admonition {
     background: #eeeeec;
     border: 2px solid #babdb6;
-    border-right-style: none;
-    border-left-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
     padding: 10px 20px 10px 60px;
 }
 
 div.note {
     border: 2px solid #7a9eec;
-    border-right-style: none;
-    border-left-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
     padding: 10px 20px 10px 60px;
     background: #e1ecfe url(dialog-note.png) no-repeat 10px 8px;
 }
@@ -237,8 +239,8 @@ div.note {
 div.seealso {
     background: #fff6bf url(dialog-seealso.png) no-repeat 10px 8px;
     border: 2px solid #ffd324;
-    border-left-style: none;
-    border-right-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
     padding: 10px 20px 10px 60px;
 }
 
@@ -248,23 +250,23 @@ div.topic {
     background: #eeeeee;
     border: 2px solid #C6C9CB;
     padding: 10px 20px;
-    border-right-style: none;
-    border-left-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
 }
 
 div.warning {
     background: #fbe3e4 url(dialog-warning.png) no-repeat 10px 8px;
     border: 2px solid #fbc2c4;
-    border-right-style: none;
-    border-left-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
     padding: 10px 20px 10px 60px;
 }
 
 div.admonition-todo {
     background: #f2d9b4 url(dialog-todo.png) no-repeat 10px 8px;
     border: 2px solid #e9b96e;
-    border-right-style: none;
-    border-left-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
     padding: 10px 20px 10px 60px;
 }
 
@@ -285,8 +287,8 @@ pre {
     border: 2px solid #C6C9CB;
     font-size: 1.1em;
     margin: 1.5em 0 1.5em 0;
-    border-right-style: none;
-    border-left-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
 }
 
 code {
@@ -303,8 +305,8 @@ code {
 div.viewcode-block:target {
     background-color: #fff6bf;
     border: 2px solid #ffd324;
-    border-left-style: none;
-    border-right-style: none;
+    border-inline-end-style: none;
+    border-inline-start-style: none;
     padding: 10px 20px;
 }
 

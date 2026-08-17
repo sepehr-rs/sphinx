@@ -83,7 +83,7 @@ h4 a:hover, a:active {
 
 a.headerlink {
     color: #a7ce38;
-    padding-left: 5px;
+    padding-inline-start: 5px;
 }
 
 a.headerlink:hover {
@@ -94,8 +94,7 @@ a.headerlink:hover {
 
 div.content {
     margin-top: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-inline: 40px;
     margin-bottom: 50px;
     font-size: 0.9em;
 }
@@ -135,7 +134,7 @@ div.header h2 {
 }
 
 div.header img.rightlogo {
-    float: right;
+    float: inline-end;
 }
 
 
@@ -151,18 +150,17 @@ div.topnav {
 }
 div.topnav p {
     margin-top: 0;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-inline: 40px;
     margin-bottom: 0px;
-    text-align: right;
+    text-align: end;
     font-size: 0.8em;
 }
 div.bottomnav {
     background: #eeeeee;
 }
 div.bottomnav p {
-    margin-right: 40px;
-    text-align: right;
+    margin-inline-end: 40px;
+    text-align: end;
     font-size: 0.8em;
 }
 
@@ -274,11 +272,11 @@ p.last {
 }
 
 ol {
-    padding-left: 20px;
+    padding-inline-start: 20px;
 }
 
 ul {
-    padding-left: 5px;
+    padding-inline-start: 5px;
     margin-top: 3px;
 }
 
@@ -318,8 +316,8 @@ pre {
 hr {
     border-top: 1px solid #ccc;
     border-bottom: 0;
-    border-right: 0;
-    border-left: 0;
+    border-inline-start: 0;
+    border-inline-end: 0;
     margin-bottom: 10px;
     margin-top: 20px;
 }
@@ -366,4 +364,9 @@ div.viewcode-block:target {
 /* math display */
 div.math p {
     text-align: center;
+}
+
+/* RTL: flip bullet position since background-position has no logical equivalent */
+html[dir="rtl"] div.content ul > li {
+    background-position: right 0.45em;
 }
