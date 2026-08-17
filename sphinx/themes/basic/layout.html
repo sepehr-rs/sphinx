@@ -91,7 +91,7 @@
 {%- if html_tag %}
 {{ html_tag }}
 {%- else %}
-<html{% if language is not none %} lang="{{ language }}"{% endif %} data-content_root="{{ content_root }}">
+<html{% if language is not none %} lang="{{ language }}"{% endif %}{% if theme_is_rtl|tobool %} dir="rtl"{% endif %} data-content_root="{{ content_root }}">
 {%- endif %}
   <head>
     <meta charset="{{ encoding }}" />

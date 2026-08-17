@@ -4,8 +4,6 @@
 
 /* -- main layout ----------------------------------------------------------- */
 
-@import url("rtl.css");
-
 div.clearer {
     clear: both;
 }
@@ -13,7 +11,7 @@ div.clearer {
 div.section::after {
     display: block;
     content: '';
-    clear: left;
+    clear: inline-start;
 }
 
 /* -- relbar ---------------------------------------------------------------- */
@@ -29,7 +27,7 @@ div.related h3 {
 
 div.related ul {
     margin: 0;
-    padding: 0 0 0 10px;
+    padding-inline-start: 10px;
     list-style: none;
 }
 
@@ -38,8 +36,8 @@ div.related li {
 }
 
 div.related li.right {
-    float: right;
-    margin-right: 5px;
+    float: inline-end;
+    margin-inline-end: 5px;
 }
 
 /* -- sidebar --------------------------------------------------------------- */
@@ -49,9 +47,9 @@ div.sphinxsidebarwrapper {
 }
 
 div.sphinxsidebar {
-    float: left;
+    float: inline-start;
     width: {{ theme_sidebarwidth|todim }};
-    margin-left: -100%;
+    margin-inline-start: -100%;
     font-size: 90%;
     word-wrap: break-word;
     overflow-wrap : break-word;
@@ -63,7 +61,7 @@ div.sphinxsidebar ul {
 
 div.sphinxsidebar ul ul,
 div.sphinxsidebar ul.want-points {
-    margin-left: 20px;
+    margin-inline-start: 20px;
     list-style: square;
 }
 
@@ -87,16 +85,16 @@ div.sphinxsidebar #searchbox form.search {
 }
 
 div.sphinxsidebar #searchbox input[type="text"] {
-    float: left;
+    float: inline-start;
     width: 80%;
     padding: 0.25em;
     box-sizing: border-box;
 }
 
 div.sphinxsidebar #searchbox input[type="submit"] {
-    float: left;
+    float: inline-start;
     width: 20%;
-    border-left: none;
+    border-inline-start: none;
     padding: 0.25em;
     box-sizing: border-box;
 }
@@ -123,8 +121,9 @@ ul.search li a {
 
 ul.search li p.context {
     color: #888;
-    margin: 2px 0 0 30px;
-    text-align: left;
+    margin-block: 2px 0;
+    margin-inline: 30px 0;
+    text-align: start;
 }
 
 ul.keywordmatches li.goodmatch a {
@@ -135,8 +134,7 @@ ul.keywordmatches li.goodmatch a {
 
 table.contentstable {
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
 }
 
 table.contentstable p.biglink {
@@ -160,7 +158,7 @@ table.indextable {
 }
 
 table.indextable td {
-    text-align: left;
+    text-align: start;
     vertical-align: top;
 }
 
@@ -171,7 +169,7 @@ table.indextable ul {
 }
 
 table.indextable > tbody > tr > td > ul {
-    padding-left: 0em;
+    padding-inline-start: 0em;
 }
 
 table.indextable tr.pcap {
@@ -184,7 +182,7 @@ table.indextable tr.cap {
 }
 
 img.toggler {
-    margin-right: 3px;
+    margin-inline-end: 3px;
     margin-top: 3px;
     cursor: pointer;
 }
@@ -250,7 +248,7 @@ div.body p.caption {
 }
 
 div.body td {
-    text-align: left;
+    text-align: start;
 }
 
 .first {
@@ -261,6 +259,11 @@ p.rubric {
     margin-top: 30px;
     font-weight: bold;
 }
+
+/* NOTE: .align-left / .align-right / images under them are the document
+   author's explicit choice (e.g. RST ":align: left"), not page-direction-
+   relative layout. These intentionally stay physical (left/right) so a
+   figure the author pinned to one side doesn't flip under RTL. */
 
 img.align-left, figure.align-left, .figure.align-left, object.align-left {
     clear: left;
@@ -306,13 +309,14 @@ img.align-default, figure.align-default, .figure.align-default {
 
 div.sidebar,
 aside.sidebar {
-    margin: 0 0 0.5em 1em;
+    margin-block: 0 0.5em;
+    margin-inline: 1em 0;
     border: 1px solid #ddb;
     padding: 7px;
     background-color: #ffe;
     width: 40%;
-    float: right;
-    clear: right;
+    float: inline-end;
+    clear: inline-end;
     overflow-x: auto;
 }
 
@@ -323,7 +327,7 @@ p.sidebar-title {
 nav.contents,
 aside.topic,
 div.admonition, div.topic, blockquote {
-    clear: left;
+    clear: inline-start;
 }
 
 /* -- topics ---------------------------------------------------------------- */
@@ -355,7 +359,8 @@ div.admonition dt {
 }
 
 p.admonition-title {
-    margin: 0px 10px 5px 0px;
+    margin-block: 0px 5px;
+    margin-inline: 0px 10px;
     font-weight: bold;
 }
 
@@ -397,13 +402,11 @@ table.docutils {
 }
 
 table.align-center {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
 }
 
 table.align-default {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
 }
 
 table caption span.caption-number {
@@ -416,19 +419,19 @@ table caption span.caption-text {
 table.docutils td, table.docutils th {
     padding: 1px 8px 1px 5px;
     border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    border-inline-start: 0;
+    border-inline-end: 0;
     border-bottom: 1px solid #aaa;
 }
 
 th {
-    text-align: left;
-    padding-right: 5px;
+    text-align: start;
+    padding-inline-end: 5px;
 }
 
 table.citation {
-    border-left: solid 1px gray;
-    margin-left: 1px;
+    border-inline-start: solid 1px gray;
+    margin-inline-start: 1px;
 }
 
 table.citation td {
@@ -473,7 +476,7 @@ table.field-list td, table.field-list th {
 
 .field-list ul {
     margin: 0;
-    padding-left: 1em;
+    padding-inline-start: 1em;
 }
 
 .field-list p {
@@ -606,17 +609,17 @@ ul.simple p {
 
 aside.footnote > span,
 div.citation > span {
-    float: left;
+    float: inline-start;
 }
 aside.footnote > span:last-of-type,
 div.citation > span:last-of-type {
-  padding-right: 0.5em;
+  padding-inline-end: 0.5em;
 }
 aside.footnote > p {
-  margin-left: 2em;
+  margin-inline-start: 2em;
 }
 div.citation > p {
-  margin-left: 4em;
+  margin-inline-start: 4em;
 }
 aside.footnote > p:last-of-type,
 div.citation > p:last-of-type {
@@ -636,14 +639,14 @@ dl.field-list {
 dl.field-list > dt {
     font-weight: bold;
     word-break: break-word;
-    padding-left: 0.5em;
-    padding-right: 5px;
+    padding-inline-start: 0.5em;
+    padding-inline-end: 5px;
 }
 
 dl.field-list > dd {
-    padding-left: 0.5em;
+    padding-inline-start: 0.5em;
     margin-top: 0em;
-    margin-left: 0em;
+    margin-inline-start: 0em;
     margin-bottom: 0em;
 }
 
@@ -662,7 +665,7 @@ dd ul, dd table {
 dd {
     margin-top: 3px;
     margin-bottom: 10px;
-    margin-left: 30px;
+    margin-inline-start: 30px;
 }
 
 .sig dd {
@@ -716,7 +719,7 @@ dl.glossary dt {
 .line-block .line-block {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 1.5em;
+    margin-inline-start: 1.5em;
 }
 
 .guilabel, .menuselection {
@@ -745,9 +748,17 @@ abbr, acronym {
 
 /* -- code displays --------------------------------------------------------- */
 
+/* Code blocks always render left-to-right, regardless of page direction:
+   source code is not localized text. */
+pre, code {
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
 pre {
     overflow: auto;
     overflow-y: hidden;  /* fixes display issues on Chrome browsers */
+    text-align: left;
 }
 
 pre, div[class*="highlight-"] {
@@ -790,7 +801,7 @@ table.highlighttable td {
 }
 
 table.highlighttable td.linenos {
-    padding-right: 0.5em;
+    padding-inline-end: 0.5em;
 }
 
 table.highlighttable td.code {
@@ -853,11 +864,11 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 .viewcode-link {
-    float: right;
+    float: inline-end;
 }
 
 .viewcode-back {
-    float: right;
+    float: inline-end;
     font-family: sans-serif;
 }
 
@@ -877,7 +888,7 @@ div.body div.math p {
 }
 
 span.eqno {
-    float: right;
+    float: inline-end;
 }
 
 span.eqno a.headerlink {

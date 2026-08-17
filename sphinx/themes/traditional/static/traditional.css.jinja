@@ -2,8 +2,6 @@
  * Sphinx stylesheet -- traditional docs.python.org theme.
  */
 
-@import url("rtl.css");
-
 body {
     color: #000;
     margin: 0;
@@ -13,12 +11,13 @@ body {
 /* :::: LAYOUT :::: */
 
 div.documentwrapper {
-    float: left;
+    float: inline-start;
     width: 100%;
 }
 
 div.bodywrapper {
-    margin: 0 {{ theme_sidebarwidth|todim }} 0 0;
+    margin-block: 0;
+    margin-inline: {{ theme_sidebarwidth|todim }} 0;
 }
 
 div.body {
@@ -31,12 +30,13 @@ div.body {
 div.sphinxsidebarwrapper {
     border: 1px solid #99ccff;
     padding: 10px;
-    margin: 10px 15px 10px 0;
+    margin-block: 10px;
+    margin-inline: 0 15px;
 }
 
 div.sphinxsidebar {
-    float: right;
-    margin-left: -100%;
+    float: inline-end;
+    margin-inline-start: -100%;
     width: {{ theme_sidebarwidth|todim }};
 }
 
@@ -67,7 +67,7 @@ div.related h3 {
 
 div.related ul {
     margin: 0;
-    padding: 0 0 0 10px;
+    padding-inline-start: 10px;
     list-style: none;
 }
 
@@ -77,8 +77,8 @@ div.related li {
 }
 
 div.related li.right {
-    float: right;
-    margin-right: 5px;
+    float: inline-end;
+    margin-inline-end: 5px;
 }
 
 /* ::: SIDEBAR :::: */
@@ -96,7 +96,7 @@ div.sphinxsidebar p.topless {
 
 div.sphinxsidebar ul {
     margin: 10px;
-    margin-left: 15px;
+    margin-inline-start: 15px;
     padding: 0;
 }
 
@@ -112,15 +112,24 @@ div.sphinxsidebar form {
 
 /* :::: SEARCH :::: */
 ul.search {
-    margin: 10px 0 0 20px;
+    margin-block: 10px 0;
+    margin-inline: 20px 0;
     padding: 0;
 }
 
 ul.search li {
-    padding: 5px 0 5px 20px;
+    padding-block: 5px;
+    padding-inline: 20px 0;
     background-image: url(file.png);
     background-repeat: no-repeat;
     background-position: 0 7px;
+}
+
+/* background-position has no logical equivalent; the search icon sits at
+   the inline-start edge, so its physical offset must be flipped explicitly
+   under RTL. */
+html[dir="rtl"] ul.search li {
+    background-position: 100% 7px;
 }
 
 ul.search li a {
@@ -129,8 +138,9 @@ ul.search li a {
 
 ul.search li div.context {
     color: #888;
-    margin: 2px 0 0 30px;
-    text-align: left;
+    margin-block: 2px 0;
+    margin-inline: 30px 0;
+    text-align: start;
 }
 
 ul.keywordmatches li.goodmatch a {
@@ -142,8 +152,10 @@ ul.keywordmatches li.goodmatch a {
 div.actions {
     border-top: 1px solid #aaa;
     background-color: #ddd;
-    margin: 10px 0 0 -20px;
-    padding: 5px 0 5px 20px;
+    margin-block: 10px 0;
+    margin-inline: -20px 0;
+    padding-block: 5px;
+    padding-inline: 20px 0;
 }
 
 form dl {
@@ -151,10 +163,10 @@ form dl {
 }
 
 form dt {
-    clear: both;
-    float: left;
+    clear: inline-start;
+    float: inline-start;
     min-width: 110px;
-    margin-right: 10px;
+    margin-inline-end: 10px;
     padding-top: 2px;
 }
 
@@ -163,7 +175,8 @@ input#homepage {
 }
 
 div.error {
-    margin: 5px 20px 0 0;
+    margin-block: 5px 0;
+    margin-inline: 0 20px;
     padding: 5px;
     border: 1px solid #d00;
     /*border: 2px solid #05171e;
@@ -175,12 +188,12 @@ div.error {
 /* :::: INLINE COMMENTS :::: */
 
 div.inlinecommentswrapper {
-    float: right;
+    float: inline-end;
     max-width: 40%;
 }
 
 div.commentmarker {
-    float: right;
+    float: inline-end;
     background-image: url(style/comment.png);
     background-repeat: no-repeat;
     width: 25px;
@@ -190,7 +203,7 @@ div.commentmarker {
 }
 
 div.nocommentmarker {
-    float: right;
+    float: inline-end;
     background-image: url(style/nocomment.png);
     background-repeat: no-repeat;
     width: 25px;
@@ -198,7 +211,7 @@ div.nocommentmarker {
 }
 
 div.inlinecomments {
-    margin-left: 10px;
+    margin-inline-start: 10px;
     margin-bottom: 5px;
     background-color: #eee;
     border: 1px solid #ccc;
@@ -228,8 +241,10 @@ div.inlinecomment {
 
 div#comments h3 {
     border-top: 1px solid #aaa;
-    padding: 5px 20px 5px 20px;
-    margin: 20px -20px 20px -20px;
+    padding-block: 5px;
+    padding-inline: 20px;
+    margin-block: 20px;
+    margin-inline: -20px;
     background-color: #ddd;
 }
 
@@ -383,7 +398,7 @@ span.linkdescr {
 /* :::: GENINDEX STYLES :::: */
 
 table.indextable td {
-    text-align: left;
+    text-align: start;
     vertical-align: top;
 }
 
@@ -394,7 +409,7 @@ table.indextable ul {
 }
 
 table.indextable > tbody > tr > td > ul {
-    padding-left: 0em;
+    padding-inline-start: 0em;
 }
 
 table.indextable tr.pcap {
@@ -407,7 +422,7 @@ table.indextable tr.cap {
 }
 
 img.toggler {
-    margin-right: 3px;
+    margin-inline-end: 3px;
     margin-top: 3px;
     cursor: pointer;
 }
@@ -455,7 +470,7 @@ a.headerlink,
 a.headerlink {
     color: #c60f0f;
     font-size: 0.8em;
-    padding: 0 4px 0 4px;
+    padding-inline: 4px;
     text-decoration: none;
     visibility: hidden;
 }
@@ -484,7 +499,7 @@ div.body p, div.body dd, div.body li {
 }
 
 div.body td {
-    text-align: left;
+    text-align: start;
 }
 
 ul.fakelist {
@@ -556,7 +571,8 @@ div.note {
 }
 
 p.admonition-title {
-    margin: 0px 10px 5px 0px;
+    margin-block: 0px 5px;
+    margin-inline: 0px 10px;
     font-weight: bold;
     display: inline;
 }
@@ -582,10 +598,11 @@ table caption span.caption-text {
 }
 
 table.docutils td, table.docutils th {
-    padding: 0 8px 2px 0;
+    padding-block: 0 2px;
+    padding-inline: 0 8px;
     border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    border-inline-start: 0;
+    border-inline-end: 0;
     border-bottom: 1px solid #aaa;
 }
 
@@ -613,7 +630,7 @@ dd ul, dd table {
 dd {
     margin-top: 3px;
     margin-bottom: 10px;
-    margin-left: 30px;
+    margin-inline-start: 30px;
 }
 
 dl.glossary dt {
@@ -622,15 +639,22 @@ dl.glossary dt {
 }
 
 th {
+    text-align: start;
+    padding-inline-end: 5px;
+}
+
+/* Code blocks always render left-to-right, regardless of page direction:
+   source code is not localized text. */
+pre, code {
+    direction: ltr;
+    unicode-bidi: embed;
     text-align: left;
-    padding-right: 5px;
 }
 
 pre {
     font-family: monospace;
     padding: 5px;
-    border-left: none;
-    border-right: none;
+    border-inline: none;
 }
 
 code {
@@ -665,7 +689,7 @@ code.xref, a code {
 .line-block .line-block {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 1.5em;
+    margin-inline-start: 1.5em;
 }
 
 h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
@@ -704,11 +728,11 @@ h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 .viewcode-link {
-    float: right;
+    float: inline-end;
 }
 
 .viewcode-back {
-    float: right;
+    float: inline-end;
     font-family: serif;
 }
 
@@ -756,5 +780,5 @@ div.body div.math p {
 }
 
 span.eqno {
-    float: right;
+    float: inline-end;
 }

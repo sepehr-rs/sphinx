@@ -2,8 +2,6 @@
  * Sphinx stylesheet -- scrolls theme.
  */
 
-@import url("rtl.css");
-
 body {
     background-color: #222;
     margin: 0;
@@ -26,7 +24,8 @@ div.footer a {
 }
 
 div.header {
-    margin: 0 -15px 0 -15px;
+    margin-block: 0;
+    margin-inline: -15px;
     background: url(headerbg.png) repeat-x;
     border-top: 6px solid {{ theme_headerbordercolor }};
 }
@@ -34,8 +33,10 @@ div.header {
 div.relnav {
     border-bottom: 1px solid #111;
     background: url(navigation.png);
-    margin: 0 -15px 0 -15px;
-    padding: 2px 20px 0 28px;
+    margin-block: 0;
+    margin-inline: -15px;
+    padding-block: 2px 0;
+    padding-inline: 28px 20px;
     line-height: 25px;
     color: #aaa;
     font-size: 12px;
@@ -57,7 +58,8 @@ div.relnav a:hover {
     color: #111;
     border-bottom: 1px solid black;
     background: url(watermark.png) center 0;
-    padding: 0 15px 0 15px;
+    padding-block: 0;
+    padding-inline: 15px;
     margin: 0;
 }
 
@@ -95,10 +97,11 @@ h1.heading span {
 #contentwrapper {
     min-width: {{ theme_body_min_width|todim }};
     max-width: {{ theme_body_max_width|todim }};
-    padding: 0 18px 20px 18px;
-    margin: 0 auto 0 auto;
-    border-right: 1px solid #eee;
-    border-left: 1px solid #eee;
+    padding-block: 0 20px;
+    padding-inline: 18px;
+    margin-block: 0;
+    margin-inline: auto;
+    border-inline: 1px solid #eee;
     background: url(watermark_blur.png) center -114px;
 }
 
@@ -132,7 +135,8 @@ p, li, dd, dt, blockquote {
 }
 
 blockquote {
-    margin: 10px 0 10px 20px;
+    margin-block: 10px;
+    margin-inline: 20px 0;
 }
 
 p {
@@ -144,14 +148,13 @@ p {
 hr {
     border-top: 1px solid #ccc;
     border-bottom: 0;
-    border-right: 0;
-    border-left: 0;
+    border-inline: 0;
     margin-bottom: 10px;
     margin-top: 20px;
 }
 
 dl {
-    margin-left: 10px;
+    margin-inline-start: 10px;
 }
 
 li, dt {
@@ -169,7 +172,7 @@ dd {
 }
 
 th {
-    text-align: left;
+    text-align: start;
     padding: 3px;
     background-color: #f2f2f2;
 }
@@ -184,6 +187,14 @@ a:hover {
 
 a:visited {
     color: {{ theme_visitedlinkcolor }};
+}
+
+/* Code blocks always render left-to-right, regardless of page direction:
+   source code is not localized text. */
+pre, code {
+    direction: ltr;
+    unicode-bidi: embed;
+    text-align: left;
 }
 
 pre {
@@ -246,8 +257,10 @@ div.admonition {
 div.admonition p.admonition-title {
     background-color: {{ theme_admonitioncolor }};
     color: white;
-    margin: -10px -10px 10px -10px;
-    padding: 4px 10px 4px 10px;
+    margin-block: -10px 10px;
+    margin-inline: -10px;
+    padding-block: 4px;
+    padding-inline: 10px;
     font-weight: bold;
     font-size: 15px;
 }
@@ -259,7 +272,7 @@ div.admonition p.admonition-title a {
 a.headerlink {
     color: #B4B4B4!important;
     font-size: 0.8em;
-    padding: 0 4px 0 4px;
+    padding-inline: 4px;
     text-decoration: none!important;
     visibility: hidden;
 }
@@ -311,7 +324,7 @@ table.indextable ul a {
 }
 
 table.indextable > tbody > tr > td > ul {
-    padding-left: 0em;
+    padding-inline-start: 0em;
 }
 
 div.modindex-jumpbox {
@@ -332,7 +345,7 @@ table.modindextable td {
 }
 
 table.modindextable img.toggler {
-    margin-right: 10px;
+    margin-inline-end: 10px;
 }
 
 dl.function dt,
@@ -345,7 +358,7 @@ dl.attribute dt {
 
 dt .descname {
     font-weight: bold;
-    margin-right: 4px;
+    margin-inline-end: 4px;
 }
 
 dt .sig-paren {
@@ -359,7 +372,7 @@ dt .descname, dt .descclassname {
 }
 
 dt .descclassname {
-    margin-left: 2px;
+    margin-inline-start: 2px;
 }
 
 dl dt big {
@@ -367,18 +380,21 @@ dl dt big {
 }
 
 ul.search {
-    margin: 10px 0 0 30px;
+    margin-block: 10px 0;
+    margin-inline: 30px 0;
     padding: 0;
 }
 
 ul.search li {
-    margin: 10px 0 0 0;
+    margin-block: 10px 0;
+    margin-inline: 0;
     padding: 0;
 }
 
 ul.search div.context {
     font-size: 12px;
-    padding: 4px 0 0 20px;
+    padding-block: 4px 0;
+    padding-inline: 20px 0;
     color: #888;
 }
 
@@ -388,13 +404,15 @@ span.highlight {
 }
 
 #toc {
-    margin: 0 -17px 0 -17px;
+    margin-block: 0;
+    margin-inline: -17px;
     display: none;
 }
 
 #toc h3 {
-    float: right;
-    margin: 5px 5px 0 0;
+    float: inline-end;
+    margin-block: 5px 0;
+    margin-inline: 0 5px;
     padding: 0;
     font-size: 12px;
     color: #777;
@@ -436,8 +454,10 @@ span.highlight {
 }
 
 #toc ul {
-    margin: 5px 0 12px 17px;
-    padding: 0 7px 0 7px;
+    margin-block: 5px 12px;
+    margin-inline-start: 17px;
+    padding-inline: 7px;
+    padding-block: 0;
 }
 
 #toc ul ul {
@@ -445,7 +465,8 @@ span.highlight {
 }
 
 #toc ul li {
-    margin: 2px 0 0 0;
+    margin-block: 2px 0;
+    margin-inline: 0;
 }
 
 .line-block {
@@ -457,15 +478,15 @@ span.highlight {
 .line-block .line-block {
     margin-top: 0;
     margin-bottom: 0;
-    margin-left: 1.5em;
+    margin-inline-start: 1.5em;
 }
 
 .viewcode-link {
-    float: right;
+    float: inline-end;
 }
 
 .viewcode-back {
-    float: right;
+    float: inline-end;
     font-family: 'Georgia', serif;
 }
 
@@ -493,5 +514,5 @@ div.math p {
 }
 
 span.eqno {
-    float: right;
+    float: inline-end;
 }
